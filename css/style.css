@@ -291,6 +291,7 @@ li a span{
 }
 .signature canvas{
 	height: 180px !important;
+        width:100%;
 }
 .id-images img{
 	width: 80px;

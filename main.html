@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phone shop - Buy</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+</head>
+<body id="top">
+  <div class="home-wrapper">
+   <div class="home-content">
+    <div role="tabpanel">
+
+      <div class="app-header">
+      	<div class="top-bar">
+      		<h1>Kaufvertrag</h1>	
+      		<span class="top-add-icon glyphicon glyphicon-plus" data-toggle="modal" data-target=""></span>
+      	</div>
+      	<!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#buy" aria-controls="buy" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        <li role="presentation"><a href="#sell" aria-controls="sell" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></a></li>
+        <li role="presentation"><a href="#offer" aria-controls="offer" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a></li>
+        <li role="presentation"><a href="#report" aria-controls="report" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></a></li>
+      </ul>
+      </div>
+
+      <aside id="menu" class="left">
+        <ul id="buy-aside">
+          <li><a href="#top">Customer Details</a></li>
+          <li><a href="#phone">Phone Details</a></li>
+          <li><a href="#signature">Signature</a></li>
+          <li><a href="#" class="logout">Logout</a></li>
+        </ul>
+        <ul id="sell-aside" style="display:none;">
+          <li><a href="#top">Customer Details</a></li>
+          <li><a href="#phone-sell">Select Phone</a></li>
+          <li><a href="#others">Other Details</a></li>
+          <li><a href="#" class="logout">Logout</a></li>
+        </ul>
+        <a href="#" id="showmenu"> <i class="fa fa-align-justify"></i> </a>
+      </aside>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="buy">
+         	<div class="buy-panel" id="buy-panel">
+         		
+	         	
+         	</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="sell">
+		  	<div class="sell-panel" id="sell-panel">
+         		
+         	</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="offer">
+		 <div class="offer-content" id="offer_tab">
+
+		 </div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="report">
+		 <div class="report-content">
+		  <div class="report-filter">
+		   <h4>Filter Report</h4>
+		   <div class="form-group">
+
+		     <div class="form-row has-feedback has-feedback-left">
+		       <label>From:</label>
+		       <input type="date" class="app-form-control" Placeholder="From" id="from">
+		       <i class="glyphicon glyphicon-calendar"></i>
+
+		     </div>
+		     <div class="form-row has-feedback has-feedback-left" >
+		       <label>To:</label>
+		       <input type="date" class="app-form-control" Placeholder="To" id="to">
+		       <i class="glyphicon glyphicon-calendar"></i>
+		     </div>
+		     <div class="form-row">
+		       <label>Status:</label>
+		       <select class="app-select" id="status">
+		        <option id="default">Default</option>
+		        <option id="sell">Sell</option>
+		        <option id="buy">Buy</option>
+		      </select>
+		    </div>
+		  </div>
+		  <div class="button-area">
+		    <a href="#" id="view">View</a>
+		    <a href="#" id="print">Print</a>
+		  </div>
+		  <div class="report-table">
+		    <table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
+		     <thead>
+		      <tr>
+		       <th>Item</th>
+		       <th>Net</th>
+		       <th>Tax</th>
+		       <th>Gross</th>
+		       <th>Refund</th>
+		     </tr>
+		   </thead>
+		   <tbody id="tbody">
+		   </tbody>
+		 </table>
+		</div>
+		</div>
+
+</div>
+</div>
+
+<!-- Modal content for buy -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Customer Details</h4>
+      </div>
+      <div class="modal-body">
+	        <div class="buy-content">
+	          <div class="form-group required">
+	           <div class="form-row">
+	            <label class="control-label">Name:</label>
+	            <input type="text" class="app-form-control" placeholder="Customer Name" id="customer_name">
+	          </div>
+	          <div class="form-row id-images">
+	            <label class="control-label">ID:</label>
+	            <img src="images/camera.jpg" id="kpicture1">
+	            <img src="images/camera.jpg" id="kpicture2">
+	          </div>
+	        </div>
+	        <h4 id="phone">Phone Details</h4>
+	        <div class="required">         
+	         <div class="form-group" id="phone_detail">         
+	          <div class="form-row">
+	           <label class="control-label">Name:</label>
+	           <input type="text" class="app-form-control" placeholder="Phone Name" id="article_name">
+	         </div>
+	         <div class="form-row">
+	           <label class="control-label">Manufacturer:</label>
+	           <input type="text" class="app-form-control" placeholder="Manufacturer" id="manufacturer">
+	         </div>
+	         <div class="form-row has-feedback has-feedback-left">
+	          <label class="control-label">IMEI:</label>
+	          <input type="text" class="app-form-control" placeholder="IMEI" id="imei">
+	          <i class="glyphicon glyphicon-barcode" id="barcode"></i>
+	          <audio id="successSound" src="sound/ta_da.mp3" type="audio/mpeg" ></audio>
+	        </div>    
+	        <div class="form-row">
+	         <label class="control-label">Price:</label>
+	         <input type="text" class="app-form-control" placeholder="Price" id="price">
+	       </div>
+	       
+	          <div class="form-row">
+	            <label>MwSt:(0% or 19%)</label>
+	            <input type="checkbox" data-toggle="toggle" id="tax" placeholder="mwsp">
+	          </div>
+	          
+		     </div>
+		   </div>
+		   <div class="clear" id="signature">
+		     <a href="#" class="clear-btn" id="clear"><span class="glyphicon glyphicon-remove"></span></a>
+		   </div>
+		   <div class="signature"></div>
+		   <div class="button-area">
+		     <input type="submit" value="SUBMIT" id="ksubmit">
+		   </div>
+		 </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal content for Email on item list -->
+<div class="modal fade" id="myEmailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Email Address</h4>
+      </div>
+      <div class="modal-body">
+	        <input class="modal-email" type="text" placeholder="Email Address">
+	        <input class="app-btn" type="submit" value="Submit" onclick="javascript:send_email(this);">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal content for Edit on item list -->
+<div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+	        <div class="other_detail" >
+ 				<div class="form-group">         
+  					<div class="form-row">
+   						<label>Name:</label>
+   						<input type="text" class="app-form-control other_name" placeholder="Name">
+ 					</div>
+ 					<div class="form-row">
+   						<label>Price:</label>
+   						<input type="text" class="app-form-control other_price" placeholder="Price">
+ 					</div>
+ 					<div class="form-row">
+   						<label>Quantity:</label>
+   						<input type="text" class="app-form-control other_quantity" placeholder="Quantity" value="1">
+ 					</div>
+ 					<div class="form-row">
+    					<label>MwSt:(0% or 19%)</label>
+    					<input type="checkbox" data-toggle="toggle" class="other_tax" placeholder="mwsp">
+  					</div>
+ 					<div class="form-row">
+      					<label>Tax:</label>
+      					<input type="text" class="app-form-control tax_value" placeholder="Tax">
+      				</div>
+      				<div class="button-area">
+						<input type="submit" value="SUBMIT" onclick="javascript:edit_transaction(this);">
+					</div>	
+            	</div>
+			</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal content for View on item list -->
+<div class="modal fade" id="myViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">View</h4>
+      </div>
+      <div class="modal-body" id="viewModel">
+	        Content for View
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for sell page -->
+<div class="modal fade" id="mySellModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Customer Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="sell-content">
+			   <div id="customer_detail">
+			     <div class="form-group">
+			      <div class="form-row">
+			       <label>Name:</label>
+			       <input type="text" class="app-form-control buyer_name" placeholder="Customer Name" id="customer_name" >
+			     </div>
+			     <div class="form-row">
+			       <label>City/Post Code:</label>
+			       <input type="text" class="app-form-control" placeholder="City" id="city">
+			     </div>
+			     <div class="form-row">
+			       <label>Street/Number:</label>
+			       <input type="text" class="app-form-control" placeholder="Street" id="street">
+			     </div>     
+			     <div class="form-row">
+			       <label>Country:</label>
+			       <input type="text" class="app-form-control" placeholder="Country" id="country">
+			     </div>
+			     <div class="form-row">
+			       <label>Email:</label>
+			       <input type="text" class="app-form-control" placeholder="Email" id="email" >
+			     </div>
+			     <div class="form-row">
+			       <label>Phone:</label>
+			       <input type="text" class="app-form-control" placeholder="Phone" id="phone">
+			     </div>
+			     
+			   </div>
+			 </div>
+			 <h4 id="phone-sell">Select Phone(s):</h4>
+			 <div class="form-group">
+			 <div class="form-row">
+			       
+			       <select id="manufacturer_select">
+			         <option value="0">Manufacturer</option>
+			       </select>
+			     </div>
+			  <p>
+			    <div class="table-responsive report-table">
+			     <table id="phones" class="display" cellspacing="0" width="100%">
+			      <thead>
+			        <tr>
+			          <th>Model</th>
+			          <th>Price</th>          
+			          <th>IMEI</th>
+			          <th>Add</th>
+			        </tr>
+			      </thead>
+			      <tbody id="select_phones">
+
+
+			      </tbody>
+			    </table>
+			  </div>
+			</p>
+			</div>
+
+			<h4>Selected Phone(s):</h4>
+			<div class="no-form-group">
+			 <div class="table-responsive report-table">
+			  <table id="phones" cellspacing="0" cellpadding="10" class="table-striped" width="100%">
+			    <thead>
+			      <tr>
+			        <th>Manufacturer</th>
+			        <th>Model</th>
+			        <th>IMEI</th>
+			        <th>Price</th>
+			        <th>Remove</th>
+			      </tr>
+			    </thead>
+			    <tbody id="selected_phones">
+
+			    </tbody>
+			  </table>
+			</div>
+			</div>
+
+
+
+			<h4 id="others">Other Details</h4>
+			<div id="other_detail_container">
+			<div class="other_detail" id="first_other">
+			 <div class="form-group">         
+			  <div class="form-row">
+			   <label>Name:</label>
+			   <input type="text" class="app-form-control other_name" placeholder="Name">
+			 </div>
+			 <div class="form-row">
+			   <label>Price:</label>
+			   <input type="text" class="app-form-control other_price" placeholder="Price">
+			 </div>
+			 <div class="form-row">
+			   <label>Quantity:</label>
+			   <input type="text" class="app-form-control other_quantity" placeholder="Quantity" value="1">
+			 </div>
+			 <div class="form-row">
+			    <label>MwSt:(0% or 19%)</label>
+			    <input type="checkbox" data-toggle="toggle" class="other_tax" placeholder="mwsp">
+			  </div>
+			 <div class="form-row">
+			      <label>Tax:</label>
+			      <input type="text" class="app-form-control tax_value" placeholder="Tax">
+			</div>
+			          
+			</div>
+			</div>
+			</div>
+			<div class="add">
+			 <a href="#" class="add-btn"><span class="glyphicon glyphicon-plus" id="add_other"></span></a>
+			</div>
+			<!-- <div class="signature"></div> -->
+			<div id="rreport">
+			    
+			</div>
+			<div class="button-area">
+			 <input type="submit" value="SUBMIT" id="rsubmit">
+			 
+			</div>
+			</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+/*function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}*/
+
+  var token = localStorage.getItem("token") //getUrlVars()["token"];
+  var CURRENT_PDF_URL;
+  var CURRENT_TRANSACTION_ID;
+  var thediv;
+;
+</script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap-toggle.js"></script>
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="libs/flashcanvas.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="js/underscore.js"></script>
+  <script src="js/jSignature.min.js"></script>
+  <script src="js/page/kauf.js"></script>
+  <script src="js/page/rauc.js"></script>
+  <script src="js/page/offer.js"></script>
+  <script src="js/page/report.js"></script>
+  <script src="js/jquery.printPage.js"></script>
+  <script type="text/javascript">
+
+   $('#myTab a').click(function (e) {
+     e.preventDefault();
+     $(this).tab('show');
+   });
+   
+   $( document).ready(function() {
+    $('.nav-tabs li').click(function(){
+      var thisli = $(this);
+      $('#showmenu').hide();
+      $('#menu').removeClass('show'); 
+      if(thisli.children('a').attr('aria-controls') == 'buy' || thisli.children('a').attr('aria-controls') == 'sell'){
+        $('#buy-aside').hide(); 
+        $('#sell-aside').show();
+          // $('#menu').addClass('show');   
+          if(thisli.children('a').attr('aria-controls') == 'buy'){
+            $('#buy-aside').show();
+            $('#sell-aside').hide();  
+          }console.log('asfd');
+          $('#showmenu').show();
+        }
+      });
+
+    $('.top-add-icon').click(function(){
+    	if($('.nav-tabs li:nth-child(1)').attr('class') == 'active'){
+    		$('#myModal').modal('show');
+    	}else if($('.nav-tabs li:nth-child(2)').attr('class') == 'active'){
+    		$('#mySellModal').modal('show');
+    	}
+    });
+    
+  });
+</script>
+<script>
+
+  $(".logout").click(function(){
+    localStorage.clear();
+    window.location="login.html";
+    
+  })
+
+</script>
+<script type="text/javascript">
+  $("#showmenu").click(function(e){
+    e.preventDefault();
+    $("#menu").toggleClass("show");
+  });
+
+  $('#menu a').not('#showmenu').click(function(){
+    $("#menu").toggleClass("show");
+    $('html, body').animate({
+      scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+  });
+
+</script>
+
+<script type="text/javascript">
+function list_listener () {
+	$('.item-content').click(function(){
+			thisdiv = $(this);
+			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
+
+			CURRENT_TRANSACTION_ID = thisdiv[0].getElementsByTagName("div")[1].innerHTML
+			prepare_view(CURRENT_TRANSACTION_ID)
+			console.log(CURRENT_TRANSACTION_ID)
+			$('.item-overlay').hide().removeClass('isShown');
+			$('.item-content').css("-webkit-filter", "blur(0px)");
+			thisdiv.next().show();
+			thisdiv.next().addClass('isShown');
+			thisdiv.css("-webkit-filter", "blur(20px)");
+
+			if(!thisdiv.next().hasClass('isShown')){
+				thisdiv.css("-webkit-filter", "blur(0px)");
+			}
+		});
+
+		$('.item-close').click(function(){
+			var thisitem = $(this);
+			var thisdiv = thisitem.closest('div').prev();
+			$('.item-overlay').hide().removeClass('isShown');
+			$('.item-content').css("-webkit-filter", "blur(0px)");
+			// thisdiv.next().show();
+			// thisdiv.next().addClass('isShown');
+			thisdiv.css("-webkit-filter", "blur(20px)");
+
+			if(!thisdiv.next().hasClass('isShown')){
+				thisdiv.css("-webkit-filter", "blur(0px)");
+			}
+		});
+}
+//js for print and email buttons on item lists
+$.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"buy"}, 
+		function(returnedData){
+			$.get("js/page/list_item.html", function( data ) {
+				var compiled = _.template(data);
+				for (var i = returnedData.transactions.length - 1; i >= 0; i--) {
+					$("#buy-panel").append(compiled({
+					customer_name: returnedData.transactions[i].customer_name,
+					price: returnedData.transactions[i].articles[0].price,
+					article_name: returnedData.transactions[i].articles[0].article_name,
+					date: returnedData.transactions[i].transaction_date.date,
+					pdf: returnedData.transactions[i].pdf,
+					transaction_id: returnedData.transactions[i].transaction_id
+				}));
+				};
+				list_listener()
+				 
+		});
+	});
+	$.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"sell"}, 
+		function(returnedData){
+			$.get("js/page/list_item.html", function( data ) {
+				var compiled = _.template(data);
+				for (var i = returnedData.transactions.length - 1; i >= 0; i--) {
+					$("#sell-panel").append(compiled({
+					customer_name: returnedData.transactions[i].customer_name,
+					price: returnedData.transactions[i].articles[0].price,
+					article_name: returnedData.transactions[i].articles[0].article_name,
+					date: returnedData.transactions[i].transaction_date.date,
+					pdf: returnedData.transactions[i].pdf,
+					transaction_id: returnedData.transactions[i].transaction_id
+				}));
+				};
+			list_listener()	 
+		});
+	});
+
+	function print (url) {
+		cordova.plugins.printer.print(url, 'Transacton', function () {
+                 alert('printing finished')
+        });
+	}
+
+	function send_email (div) {
+	   address = $(div).prev().val() 
+	   $.ajax({
+             type: "POST",
+             url: "https://mandrillapp.com/api/1.0/messages/send.json",
+             data: {
+                 'key': '4hL8kWTGJB1Ztv2rDVNalA',
+                 'message': {
+                   'from_email': 'transactions@wingshandy.com',
+                   'to': [
+                     {
+                     'email': address,
+                     'name': 'Recipent',
+                     'type': 'to'
+                   }
+             ],
+                   'autotext': 'true',
+                   'subject': 'Receipt',
+                   'html': 'Hi, The receipt for the transaction ' + CURRENT_PDF_URL
+                 }
+               }
+             }).done(function(response) {
+               alert("Email Sent"); 
+               $('.modal').modal('hide');
+
+
+      });
+	}
+	function edit_transaction (submit_button) {
+		button = $(submit_button)
+		name = $(button[0].parentNode).siblings()[0].getElementsByTagName("input")[0].value
+		price = $(button[0].parentNode).siblings()[1].getElementsByTagName("input")[0].value
+		quantity = $(button[0].parentNode).siblings()[2].getElementsByTagName("input")[0].value
+		mwst = $(button[0].parentNode).siblings()[3].getElementsByTagName("input")[0].value
+		tax = $(button[0].parentNode).siblings()[4].getElementsByTagName("input")[0].value
+		data = {"id":CURRENT_TRANSACTION_ID,"others": [{"name": name,"price": price,"qty": quantity,"tax": mwst,"tax_value": tax}]}
+		$.post('http://s250217848.online.de/api/public/index.php/transaction/update', data, 
+		function(returnedData){
+			if (returnedData.statusCode === 200)
+			{
+				alert("Transaction Updated Succesfully")
+				$('.modal').modal('hide');
+				location.reload()
+
+			}
+			else
+			{
+				alert("There was an error please try again")
+
+			}
+			
+		});
+
+	
+
+	}
+	function prepare_view(transaction_id)
+	{
+		data = {"id":transaction_id}
+		$.post('http://s250217848.online.de/api/public/index.php/transaction/view', data, 
+			function(returnedData)
+			{
+				console.log(returnedData.transactions.transaction_type)
+				if(returnedData.transactions.transaction_type == "buy")
+				{
+					$.get("js/page/buy-pdf.blade.html", function( data ) {
+					var compiled = _.template(data);
+					$("#viewModel").replaceWith(compiled({
+						transaction:returnedData.transactions}))
+					
+					});
+				}
+				else if(returnedData.transactions.transaction_type == "sell")
+				{
+					$.get("js/page/sell-pdf.blade.html", function( data ) {
+					var compiled = _.template(data);
+					$("#viewModel").replaceWith(compiled({
+						transaction:returnedData.transactions}))
+					
+					});
+				}
+				
+			}
+		);
+		//$("#viewModel").append("Yo")
+	}
+
+</script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+</html>

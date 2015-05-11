@@ -176,7 +176,7 @@ function onBackKeyDown()
 function getBase64Image(img) {
     // Create an empty canvas element
     var canvas = document.createElement("canvas");
-   // canvas.width = img.width;
+    canvas.width = img.width;
     canvas.height = img.height;
 
     // Copy the image contents to the canvas

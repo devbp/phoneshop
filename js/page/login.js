@@ -26,9 +26,9 @@ $(document ).ready(function() {
             localStorage.token = token;
             window.location="main.html?token="+token;
          }
-         else
+          if (returnedData.statusCode != 200)
          {
-            alert("Try Again. There was a problem.")
+            alert("Try Again with valid username and password. There was a problem.")
          }
          
     });

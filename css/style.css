@@ -19,11 +19,16 @@ a{
 	text-align: center;
 	width: 100%;
 	display: table;
-	/*background:url('../images/bg.jpg');*/
-	background: -webkit-radial-gradient(circle, #E3786C, #DF1D15);
+	background-image :url('../images/login-logo.png');
+        background-repeat: no-repeat;
+	background-size: 70%;
+        
+        background-position: 50% 10%
+       
+/*	background: -webkit-radial-gradient(circle, #E3786C, #DF1D15);
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 20px;
+	padding: 20px;*/
 }
 .login-content{
 	min-height: 100%;
@@ -438,6 +443,7 @@ color: #FFE9E7 !important;
 	top: 0;
 	width: 100%;
 	z-index: 15;
+        //padding-top: 30px;
 }
 .top-bar{
 	height: 45px;

@@ -3,6 +3,7 @@ html, body{
 	height: 100%;
 	margin: 0;
 	font-family: helvetica;
+        padding-top: 15px;
 }
 body{
 	min-height: 100%;
@@ -108,6 +109,8 @@ li a span{
 	/*margin-bottom: 7px;*/
 }
 .nav-tabs{
+        position:relative;
+        top:24px;
 	border-bottom: 5px solid #DF1D15;
 	padding-bottom: 1px;
 	/*background:url('../images/bg.jpg');*/
@@ -332,6 +335,7 @@ li a span{
 
 #menu {
   position: fixed;
+  
   background-color: #222;
   height: 100%;
   z-index: 10;
@@ -407,7 +411,7 @@ li a span{
 #showmenu {
   margin-left: 100%;
   position: absolute;
-  top: 0;
+  top: 23px;
   padding: 6px 10px 7px 10px;
   font-size: 1.3em;
   color: #DF1D15;
@@ -443,9 +447,13 @@ color: #FFE9E7 !important;
 	top: 0;
 	width: 100%;
 	z-index: 15;
+        background-color:white;
+        //top:30px;
         //padding-top: 30px;
 }
 .top-bar{
+    position:relative;
+    top:23px;
 	height: 45px;
 	background: #DF1D15;
 	text-align: center;

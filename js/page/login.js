@@ -5,7 +5,8 @@ $(document ).ready(function() {
                     loginCheck($("#username").val(),$( "#password").val());
                 }
                 else {
-                    console.log("Failed")
+                    //console.log("Failed")
+                    alert('Invalid username or password');
                 }
             });
 

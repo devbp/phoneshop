@@ -29,7 +29,9 @@ function onFail(message) {
           if(!result.cancelled)
           {
             $("#imei").val(result.text)
-            $('#successSound')[0].play()
+            //$('#successSound')[0].play()
+            navigator.notification.beep(3);
+            navigator.notification.vibrate(2000);
           }
 
         }, 

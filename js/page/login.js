@@ -1,3 +1,8 @@
+
+function alertdismissed()
+{
+console.log('hello');
+ }
 $(document ).ready(function() {
             $( ".login-btn" ).click(function() {
                 if ($( "#username").val() && $( "#password").val())
@@ -6,11 +11,19 @@ $(document ).ready(function() {
                 }
                 else {
                     //console.log("Failed")
-                    alert('Invalid username or password');
+                    //alert('Invalid username or password');
+                    navigator.notification.alert(
+                    'Invalid username or password!',  // message
+                      alertdismissed,         // callback
+                       'Login Page',            // title
+                        'Ok'                  // buttonName
+);
                 }
             });
 
     });
+
+
 
 	function loginCheck (username, password) {        
     //spinnerplugin.show();

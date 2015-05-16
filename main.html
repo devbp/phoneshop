@@ -650,18 +650,20 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 	}
 	function view_pdf(url)
 	{
-		options: {
+            alert(url)
+            
+		var options= {
     		title: "Transaction"
     	}
 	
 		SitewaertsDocumentViewer.viewDocument(url, 'application/pdf', options, function () {
-			console.log('document shown');
+			alert('document shown');
 		}, function(){
   			alert('You need a pdf viewer to view the document')
   		}, 
 			function(){
-  			console.log('Impossible to show the document');
-  		}, onError);
+  	      alert('Impossible to show the document');
+  		}, function(){alert('error on opening pdf file')});
 	}
 	function prepare_view(transaction_id)
 	{

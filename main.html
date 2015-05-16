@@ -378,7 +378,7 @@
 			 </div>
 			 <div class="form-row">
 			    <label>MwSt:(0% or 19%)</label>
-			    <input type="checkbox" data-toggle="toggle" class="other_tax" placeholder="mwsp">
+			    <input type="checkbox" data-toggle="toggle" class="other_tax">
 			  </div>
 			 <div class="form-row">
 			      <label>Tax:</label>
@@ -653,16 +653,39 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
             alert(url)
             
 		var options= {
-    		title: "Transaction"
-    	}
+    		title: "Transaction",
+                
+                    documentView : {
+                    closeLabel : 'bill'
+                },
+                navigationView : {
+                    closeLabel : ''
+                },
+                email : {
+                    enabled : true
+                },
+                print : {
+                    enabled : true
+                },
+                openWith : {
+                    enabled : true
+                },
+                bookmarks : {
+                    enabled : true
+                },
+                search : {
+                    enabled : true
+                },
+                    }
 	
-		SitewaertsDocumentViewer.viewDocument(url, 'application/pdf', options, function () {
+		SitewaertsDocumentViewer.viewDocument('receipt-26.pdf', 'application/pdf', options, function () {
 			alert('document shown');
 		}, function(){
-  			alert('You need a pdf viewer to view the document')
+  			alert('close pdf')
+                        //implement to delete downloaded pdf file.
   		}, 
 			function(){
-  	      alert('Impossible to show the document');
+  	      alert('missing app');
   		}, function(){alert('error on opening pdf file')});
 	}
 	function prepare_view(transaction_id)

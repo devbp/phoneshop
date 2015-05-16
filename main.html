@@ -610,6 +610,41 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 	
 
 	}
+	function view_pdf(url)
+	{
+		options: {
+    		title: STRING,
+    		documentView : {
+        		closeLabel : STRING
+    		},
+    		navigationView : {
+        		closeLabel : STRING
+    		},
+    		email : {
+        		enabled : BOOLEAN
+    		},
+    		print : {
+        		enabled : BOOLEAN
+    		},
+    		openWith : {
+        		enabled : BOOLEAN
+    		},
+    		bookmarks : {
+        		enabled : BOOLEAN
+    		},
+    		search : {
+        	enabled : BOOLEAN
+    		}
+		}
+		SitewaertsDocumentViewer.canViewDocument(url, 'application/pdf', options, function () {
+			console.log('document shown');
+		}, function(){
+  			alert('You need a pdf viewer to view the document')
+  		}, 
+			function(){
+  			console.log('Impossible to show the document');
+  		}, onError);
+	}
 	function prepare_view(transaction_id)
 	{
 		data = {"id":transaction_id}

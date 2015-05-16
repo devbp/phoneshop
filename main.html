@@ -654,7 +654,7 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
     		title: "Transaction"
     	}
 	
-		SitewaertsDocumentViewer.canViewDocument(url, 'application/pdf', options, function () {
+		SitewaertsDocumentViewer.viewDocument(url, 'application/pdf', options, function () {
 			console.log('document shown');
 		}, function(){
   			alert('You need a pdf viewer to view the document')

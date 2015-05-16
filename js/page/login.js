@@ -15,7 +15,7 @@ $(document ).ready(function() {
                     navigator.notification.alert(
                     'Invalid username or password!',  // message
                       alertdismissed,         // callback
-                       'Login Page',            // title
+                       ' ',            // title
                         'Ok'                  // buttonName
 );
                 }
@@ -37,6 +37,7 @@ $(document ).ready(function() {
             token = returnedData.token.token_key
             console.log(token)            
             localStorage.token = token;
+            nativetransitions.flip(0.8, 'down');
             window.location="main.html?token="+token;
          }
           if (returnedData.statusCode != 200)

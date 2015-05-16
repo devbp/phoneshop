@@ -30,7 +30,7 @@ function onFail(message) {
           {
             $("#imei").val(result.text)
             //$('#successSound')[0].play()
-            navigator.notification.beep(3);
+            navigator.notification.beep(2);
             navigator.notification.vibrate(2000);
           }
 

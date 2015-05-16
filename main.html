@@ -456,6 +456,7 @@
 
   $(".logout").click(function(){
     localStorage.clear();
+    nativetransitions.flip(0.8, 'down');
     window.location="login.html";
     
   })

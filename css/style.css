@@ -336,13 +336,13 @@ li a span{
 
 #menu {
   position: fixed;
-  
+ 
   background-color: #222;
   height: 100%;
   z-index: 10;
   width: 280px;
   color: #bbb;
-  top: 0;
+  top: 25px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -361,7 +361,7 @@ li a span{
 
 #menu ul li a {
   color: inherit;
-  font-size: 16px;
+  font-size: 20px;
   display: block;
   padding: 8px 0 8px 7px;
   text-decoration: none;
@@ -412,7 +412,7 @@ li a span{
 #showmenu {
   margin-left: 100%;
   position: absolute;
-  top: 23px;
+  top: -2px;
   padding: 6px 10px 7px 10px;
   font-size: 1.3em;
   color: #DF1D15;

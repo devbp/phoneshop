@@ -195,6 +195,22 @@
   </div>
 </div>
 
+<!-- Modal content for Delete on item list -->
+<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Pharse</h4>
+      </div>
+      <div class="modal-body">
+	        <input class="modal-email" type="text" placeholder="delete phrase">
+	        <input class="app-btn" type="submit" value="Delete" onclick="javascript:delete_transaction(this);">
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal content for Edit on item list -->
 <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -405,6 +421,7 @@
   var CURRENT_PDF_URL;
   var CURRENT_TRANSACTION_ID;
   var thediv;
+  var value;
 
 </script>
 <script type="text/javascript" src="cordova.js"></script>
@@ -557,6 +574,22 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 		cordova.plugins.printer.print(url, 'Transacton', function () {
                  alert('printing finished')
         });
+	}
+
+	function delete_transaction(div)
+	{
+		delete_phrase = $(div).prev().val()
+		if (delete_phrase === "yesdelete")
+		{
+               //post request to the delete endpoint
+               $('.modal').modal('hide');
+		}
+		else
+		{
+			alert("Not deleted")
+               $('.modal').modal('hide');
+
+		}
 	}
 
 	function send_email (div) {

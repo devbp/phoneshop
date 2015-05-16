@@ -8,11 +8,11 @@
 		<p class="item-date"><%= date %></p>
 	</div>
 	<div class="item-overlay">
-		<a href="" class="item-email" data-toggle="modal" data-target="#myDeleteModal">Delete</a>
+		<a href="" class="item-view" data-toggle="modal" data-target="#myDeleteModal">Delete</a>
 	    <a href="" class="item-email" data-toggle="modal" data-target="#myEmailModal">Email</a>
 	    <a href="#" class="item-print" onclick="javascript:print('http://s250217848.online.de/api/public/files/<%= pdf %>');">Print</a>
 	    <a href="" class="item-edit" data-toggle="modal" data-target="#myEditModal">Edit</a>
-	    <a href="" class="item-view" data-toggle="modal" data-target="#myViewModal" onclick="javascript:download_pdf('http://s250217848.online.de/api/public/files/<%= pdf %>');">View </a>
+	    <a href="" class="item-view" onclick="javascript:download_pdf('http://s250217848.online.de/api/public/files/<%= pdf %>');">View </a>
 	   <!-- <a href="javascript:void(0)" class="item-close">&times;</a>-->
 	</div>
 </div>

@@ -252,7 +252,7 @@
   </div>
 </div>
 
-<!-- Modal content for View on item list -->
+<!-- Modal content for View on item list
 <div class="modal fade" id="myViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -266,7 +266,7 @@
     </div>
   </div>
 </div>
-
+-->
 
 <!-- Modal for sell page -->
 <div class="modal fade" id="mySellModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -506,7 +506,7 @@ function list_listener () {
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 
 			CURRENT_TRANSACTION_ID = thisdiv[0].getElementsByTagName("div")[1].innerHTML
-			prepare_view(CURRENT_TRANSACTION_ID)
+			//prepare_view(CURRENT_TRANSACTION_ID)
 			console.log(CURRENT_TRANSACTION_ID)
 			$('.item-overlay').hide().removeClass('isShown');
 			$('.item-content').css("-webkit-filter", "blur(0px)");
@@ -726,32 +726,32 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 	}
 	function prepare_view(transaction_id)
 	{
-		data = {"id":transaction_id}
-		$.post('http://s250217848.online.de/api/public/index.php/transaction/view', data, 
-			function(returnedData)
-			{
-				console.log(returnedData.transactions.transaction_type)
-				if(returnedData.transactions.transaction_type == "buy")
-				{
-					$.get("js/page/buy-pdf.blade.html", function( data ) {
-					var compiled = _.template(data);
-					$("#viewModel").replaceWith(compiled({
-						transaction:returnedData.transactions}))
-					
-					});
-				}
-				else if(returnedData.transactions.transaction_type == "sell")
-				{
-					$.get("js/page/sell-pdf.blade.html", function( data ) {
-					var compiled = _.template(data);
-					$("#viewModel").replaceWith(compiled({
-						transaction:returnedData.transactions}))
-					
-					});
-				}
-				
-			}
-		);
+//		data = {"id":transaction_id}
+//		$.post('http://s250217848.online.de/api/public/index.php/transaction/view', data, 
+//			function(returnedData)
+//			{
+//				console.log(returnedData.transactions.transaction_type)
+//				if(returnedData.transactions.transaction_type == "buy")
+//				{
+//					$.get("js/page/buy-pdf.blade.html", function( data ) {
+//					var compiled = _.template(data);
+//					$("#viewModel").replaceWith(compiled({
+//						transaction:returnedData.transactions}))
+//					
+//					});
+//				}
+//				else if(returnedData.transactions.transaction_type == "sell")
+//				{
+//					$.get("js/page/sell-pdf.blade.html", function( data ) {
+//					var compiled = _.template(data);
+//					$("#viewModel").replaceWith(compiled({
+//						transaction:returnedData.transactions}))
+//					
+//					});
+//				}
+//				
+//			}
+//		);
 		//$("#viewModel").append("Yo")
 	}
 

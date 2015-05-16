@@ -618,29 +618,9 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 	function view_pdf(url)
 	{
 		options: {
-    		title: STRING,
-    		documentView : {
-        		closeLabel : STRING
-    		},
-    		navigationView : {
-        		closeLabel : STRING
-    		},
-    		email : {
-        		enabled : BOOLEAN
-    		},
-    		print : {
-        		enabled : BOOLEAN
-    		},
-    		openWith : {
-        		enabled : BOOLEAN
-    		},
-    		bookmarks : {
-        		enabled : BOOLEAN
-    		},
-    		search : {
-        	enabled : BOOLEAN
-    		}
-		}
+    		title: "Transaction"
+    	}
+	
 		SitewaertsDocumentViewer.canViewDocument(url, 'application/pdf', options, function () {
 			console.log('document shown');
 		}, function(){

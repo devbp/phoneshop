@@ -141,11 +141,11 @@
 	         <div class="form-group" id="phone_detail">         
 	          <div class="form-row">
 	           <label class="control-label"></label>
-	           <input type="text" class="app-form-control" placeholder="Phone Name" id="article_name">
+	           <input type="text" class="app-form-control" placeholder="Manufacturer" id="manufacturer">
 	         </div>
 	         <div class="form-row">
 	           <label class="control-label"></label>
-	           <input type="text" class="app-form-control" placeholder="Manufacturer" id="manufacturer">
+	           <input type="text" class="app-form-control" placeholder="Model" id="article_name">
 	         </div>
 	         <div class="form-row has-feedback has-feedback-left">
 	          <label class="control-label"></label>
@@ -270,11 +270,13 @@
 			     </div>
 			     <div class="form-row">
 			       <label></label>
-			       <input type="text" class="app-form-control" placeholder="City/PostCode" id="city">
+                               <input type="text" class="app-form-control" placeholder="Street/Number" id="street">
+			       
 			     </div>
 			     <div class="form-row">
 			       <label></label>
-			       <input type="text" class="app-form-control" placeholder="Street/Number" id="street">
+                               <input type="text" class="app-form-control" placeholder="City/PostCode" id="city">
+			       
 			     </div>     
 			     <div class="form-row">
 			       <label></label>
@@ -286,7 +288,8 @@
 			     </div>
 			     <div class="form-row">
 			       <label></label>
-			       <input type="text" class="app-form-control" placeholder="Phone" id="phone">
+			       <input type="text" class="app-form-control" placeholder="Phone" id="phone" pattern="[0-9]*">
+                               
 			     </div>
 			     
 			   </div>
@@ -456,8 +459,9 @@
 
   $(".logout").click(function(){
     localStorage.clear();
-    nativetransitions.flip(0.8, 'down');
+   
     window.location="login.html";
+     nativetransitions.flip(0.8, 'down');
     
   })
 

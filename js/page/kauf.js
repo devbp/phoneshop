@@ -24,13 +24,15 @@ function onFail(message) {
 
 
     $("#barcode").click(function(){
+        // $("#imei").val='';
       cordova.plugins.barcodeScanner.scan(
         function (result) {
+           
           if(!result.cancelled)
           {
             $("#imei").val(result.text)
             //$('#successSound')[0].play()
-            navigator.notification.beep(2);
+            navigator.notification.beep(1);
             navigator.notification.vibrate(2000);
           }
 

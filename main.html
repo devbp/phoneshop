@@ -182,7 +182,7 @@
       </div>
       <div class="modal-body">
 	        <div class="clear" id="signature">
-		     <a href="#" class="clear-btn" id="clear"><span class="glyphicon glyphicon-remove"></span></a>
+		     <a href="#" class="clear-btn" id="clear"><span class="glyphicon glyphicon-remove"> clear signature</span></a>
 		   </div>
 		   <div class="signature"></div>
 		   <div class="button-area">
@@ -216,10 +216,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> -->
-        <h4 class="modal-title" id="myModalLabel">Delete Pharse</h4>
+        <h4 class="modal-title" id="myModalLabel">Password Required</h4>
       </div>
       <div class="modal-body">
-	        <input class="modal-email" type="text" placeholder="delete phrase">
+	        <input class="modal-email" type="password" placeholder="Enter Password">
 	        <input class="app-btn" type="submit" value="Delete" onclick="javascript:delete_transaction(this);">
       </div>
     </div>
@@ -347,9 +347,9 @@
 			  <table id="phones" cellspacing="0" cellpadding="10" class="table-striped" width="100%">
 			    <thead>
 			      <tr>
-			        <th>Manufacturer</th>
+			        <!--<th>Manufacturer</th>-->
 			        <th>Model</th>
-			        <th>IMEI</th>
+			       <!-- <th>IMEI</th> -->
 			        <th>Price</th>
 			        <th>Remove</th>
 			      </tr>
@@ -776,9 +776,9 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
                     }                                  
 	
 		SitewaertsDocumentViewer.viewDocument(url, 'application/pdf', options, function () {
-			alert('document shown');
+			//alert('document shown');
 		}, function(){
-  			alert('close pdf')
+  			//alert('close pdf')
                         //implement to delete downloaded pdf file.
   		}, 
 			function(){

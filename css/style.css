@@ -65,7 +65,7 @@ a{
 	background: rgba(255, 255, 255, 1);
 	height: 34px;
 }
-.login-btn:hover{
+login-btn:hover{
 	background: rgba(255, 255, 255, 0.9);
 }
 .login-wrapper p{
@@ -110,7 +110,7 @@ li a span{
 }
 .nav-tabs{
         position:relative;
-        /*top:24px;*/
+        top:24px;
 	border-bottom: 5px solid #DF1D15;
 	padding-bottom: 1px;
 	/*background:url('../images/bg.jpg');*/
@@ -164,7 +164,7 @@ li a span{
 .tab-content{
 	background: #F8F8F8;
 	padding: 10px;
-	/*padding-top: 40px;*/
+	padding-top: 40px;
 }
 .tab-content h4{
 	padding-left: 10px;
@@ -291,7 +291,9 @@ li a span{
 }
 .signature canvas{
 	height: 200px !important;
-        width:100%;
+        width: 70% !important;
+        margin-left:40px !important;
+        background-color: rgba(202, 252, 202, 0.42)
 }
 .id-images img{
 	width: 80px;
@@ -413,7 +415,7 @@ li a span{
 #showmenu {
   margin-left: 100%;
   position: absolute;
-  top: -2px;
+  top: 0px;
   padding: 6px 10px 7px 10px;
   font-size: 1.3em;
   color: #DF1D15;
@@ -455,7 +457,7 @@ color: #FFE9E7 !important;
 }
 .top-bar{
     position:relative;
-    /*top:23px;*/
+      top:23px;
 	height: 45px;
 	background: #DF1D15;
 	text-align: center;
@@ -486,6 +488,7 @@ i.glyphicon-barcode {
 }
 #menu{
 	z-index: 20 !important;
+        top:23px;
 }
 .item-row{
 	border-bottom: 1px solid #8D8D8D;
@@ -520,13 +523,14 @@ i.glyphicon-barcode {
 	font-weight: normal;
 }
 .modal-header{
-	background: #DF1D15 !important;
-	color: #fff !important;
-	  padding: 15px !important;
+	//background: #DF1D15 !important;
+	background:white;
+        color: #fff !important;
+	padding: 5px !important;
 }
 .modal-header button{
 	  float: left;
-  background: #C2322C;
+  //background: #C2322C;
   height: 40px;
   width: 40px;
   border-radius: 30px;

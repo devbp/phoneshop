@@ -342,6 +342,7 @@ th {
 }
 .glyphicon-remove:before {
   content: "\e014";
+ // content:"Clear Signature";
 }
 .glyphicon-zoom-in:before {
   content: "\e015";
@@ -534,6 +535,7 @@ th {
 }
 .glyphicon-chevron-left:before {
   content: "\e079";
+  color:black;
 }
 .glyphicon-chevron-right:before {
   content: "\e080";
@@ -5777,6 +5779,7 @@ button.close {
   margin: 0;
   line-height: 1.42857143;
   text-align:center;
+  color:black;
 }
 .modal-body {
   position: relative;
@@ -5808,6 +5811,7 @@ button.close {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
+    overflow-x:scroll;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

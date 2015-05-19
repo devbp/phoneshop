@@ -19,15 +19,15 @@
 
       <div class="app-header">
       	<div class="top-bar">
-      		<h1>Kaufvertrag</h1>	
+      		<h1 id="main-title">Kaufvertrag</h1>	
       		<span class="top-add-icon glyphicon glyphicon-plus" data-toggle="modal" data-target=""></span>
       	</div>
       	<!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#buy" aria-controls="buy" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-        <li role="presentation"><a href="#sell" aria-controls="sell" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></a></li>
-        <li role="presentation"><a href="#offer" aria-controls="offer" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a></li>
-        <li role="presentation"><a href="#report" aria-controls="report" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></a></li>
+        <li id="nav-tab-buy" role="presentation" class="active"><a href="#buy" aria-controls="buy" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        <li id="nav-tab-sell" role="presentation"><a href="#sell" aria-controls="sell" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></a></li>
+        <li id="nav-tab-offer" role="presentation"><a href="#offer" aria-controls="offer" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a></li>
+        <li id="nav-tab-report" role="presentation"><a href="#report" aria-controls="report" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></a></li>
       </ul>
       </div>
 
@@ -480,6 +480,23 @@
   <script src="js/page/offer.js"></script>
   <script src="js/page/report.js"></script>
   <script src="js/jquery.printPage.js"></script>
+  <script type="text/javascript">
+ 	$( document).ready(function() {
+ 		$('#nav-tab-buy').click(function(){
+ 			$('#main-title').text('Kaufvertag');
+ 		});
+ 		$('#nav-tab-sell').click(function(){
+ 			$('#main-title').text('Rechnung');
+ 		});
+ 		$('#nav-tab-offer').click(function(){
+ 			$('#main-title').text('Angebot');
+ 		});
+ 		$('#nav-tab-report').click(function(){
+ 			$('#main-title').text('Report');
+ 		});
+ 	});
+
+  </script>
   <script type="text/javascript">
 
    $('#myTab a').click(function (e) {

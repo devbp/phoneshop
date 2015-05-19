@@ -684,3 +684,6 @@ i.glyphicon-barcode {
 	color: #fff !important;
 	margin-right: 10px;
 }
+.toggle.off .toggle-group {
+  background: #F3BAB6 !important;
+}

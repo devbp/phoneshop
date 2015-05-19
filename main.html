@@ -120,7 +120,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">Add Items</h4>
       </div>
       <div class="modal-body">
@@ -165,14 +165,29 @@
 	          
 		     </div>
 		   </div>
-		   <div class="clear" id="signature">
+		   <a href="" class="add-signature-btn" data-toggle="modal" data-target="#mySignatureModal"><span class="glyphicon glyphicon-plus"></span>Signature</a>
+		   
+		 </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal content for Signature on item list -->
+<div class="modal fade" id="mySignatureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Signature</h4>
+      </div>
+      <div class="modal-body">
+	        <div class="clear" id="signature">
 		     <a href="#" class="clear-btn" id="clear"><span class="glyphicon glyphicon-remove"></span></a>
 		   </div>
 		   <div class="signature"></div>
 		   <div class="button-area">
 		     <input type="submit" value="SUBMIT" id="ksubmit">
 		   </div>
-		 </div>
       </div>
     </div>
   </div>
@@ -184,7 +199,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">Email Address</h4>
       </div>
       <div class="modal-body">
@@ -200,7 +215,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> -->
         <h4 class="modal-title" id="myModalLabel">Delete Pharse</h4>
       </div>
       <div class="modal-body">
@@ -216,7 +231,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> -->
         <h4 class="modal-title" id="myModalLabel">Edit</h4>
       </div>
       <div class="modal-body">
@@ -252,28 +267,15 @@
   </div>
 </div>
 
-<!-- Modal content for View on item list
-<div class="modal fade" id="myViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">View</h4>
-      </div>
-      <div class="modal-body" id="viewModel">
-	        Content for View
-      </div>
-    </div>
-  </div>
-</div>
--->
+ 
+
 
 <!-- Modal for sell page -->
 <div class="modal fade" id="mySellModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">New Bill</h4>
       </div>
       <div class="modal-body">
@@ -281,36 +283,37 @@
 			   <div id="customer_detail">
 			     <div class="form-group">
 			      <div class="form-row">
-			       <label></label>
+			       <!-- <label></label> -->
 			       <input type="text" class="app-form-control buyer_name" placeholder="Customer Name" id="customer_name" >
 			     </div>
 			     <div class="form-row">
-			       <label></label>
-                               <input type="text" class="app-form-control" placeholder="Street/Number" id="street">
+			       <!-- <label></label> -->
+                   <input type="text" class="app-form-control" placeholder="Street/Number" id="street">
 			       
 			     </div>
 			     <div class="form-row">
-			       <label></label>
-                               <input type="text" class="app-form-control" placeholder="City/PostCode" id="city">
+			       <!-- <label></label> -->
+                   <input type="text" class="app-form-control" placeholder="City/PostCode" id="city">
 			       
 			     </div>     
 			     <div class="form-row">
-			       <label></label>
+			       <!-- <label></label> -->
 			       <input type="text" class="app-form-control" placeholder="Country" id="country">
 			     </div>
 			     <div class="form-row">
-			       <label></label>
+			       <!-- <label></label> -->
 			       <input type="text" class="app-form-control" placeholder="Email" id="email" >
 			     </div>
 			     <div class="form-row">
-			       <label></label>
+			       <!-- <label></label> -->
 			       <input type="text" class="app-form-control" placeholder="Phone" id="phone" pattern="[0-9]*">
                                
 			     </div>
 			     
 			   </div>
 			 </div>
-			 <h4 id="phone-sell">Select Phone(s):</h4>
+			 <a href="" class="add-phones-btn" data-toggle="modal" data-target="#selectPhonesModal"><span class="glyphicon glyphicon-plus"></span>Select Phone(s)</a>
+			 <!-- <h4 id="phone-sell">Select Phone(s):</h4>
 			 <div class="form-group">
 			 <div class="form-row">
 			       
@@ -336,7 +339,7 @@
 			    </table>
 			  </div>
 			</p>
-			</div>
+			</div> -->
 
 			<h4>Selected Phone(s):</h4>
 			<div class="no-form-group">
@@ -402,6 +405,45 @@
 			</div>
       </div>
       
+    </div>
+  </div>
+</div>
+<!-- Modal content for Select Phones on item list -->
+<div class="modal fade select-phones-modal" id="selectPhonesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Select Phone(s)</h4>
+      </div>
+      <div class="modal-body">
+			 <div class="form-group">
+			 <div class="form-row">
+			       
+			       <select id="manufacturer_select" class="phone-filter">
+			         <option value="0">Manufacturer</option>
+			       </select>
+			     </div>
+			  <p>
+			    <div class="table-responsive report-table">
+			     <table id="phones" class="display" cellspacing="0" width="100%">
+			      <thead>
+			        <tr>
+			          <th>Model</th>
+			          <th>Price</th>          
+			          <th>IMEI</th>
+			          <th>Add</th>
+			        </tr>
+			      </thead>
+			      <tbody id="select_phones">
+
+
+			      </tbody>
+			    </table>
+			  </div>
+			</p>
+			</div>
+      </div>
     </div>
   </div>
 </div>
@@ -508,29 +550,31 @@ function list_listener () {
 			CURRENT_TRANSACTION_ID = thisdiv[0].getElementsByTagName("div")[1].innerHTML
 			//prepare_view(CURRENT_TRANSACTION_ID)
 			console.log(CURRENT_TRANSACTION_ID)
-			$('.item-overlay').hide().removeClass('isShown');
+			// $('.item-overlay').hide();
+			$('.item-overlay').removeClass('isShown');
 			$('.item-content').css("-webkit-filter", "blur(0px)");
-			thisdiv.next().show();
+			// thisdiv.next().show();
 			thisdiv.next().addClass('isShown');
-			thisdiv.css("-webkit-filter", "blur(20px)");
+			// thisdiv.css("-webkit-filter", "blur(20px)");
 
-			if(!thisdiv.next().hasClass('isShown')){
-				thisdiv.css("-webkit-filter", "blur(0px)");
-			}
+			// if(!thisdiv.next().hasClass('isShown')){
+			// 	thisdiv.css("-webkit-filter", "blur(0px)");
+			// }
 		});
 
 		$('.item-close').click(function(){
 			var thisitem = $(this);
 			var thisdiv = thisitem.closest('div').prev();
-			$('.item-overlay').hide().removeClass('isShown');
+			// $('.item-overlay').hide().
+			$('.item-overlay').removeClass('isShown');
 			$('.item-content').css("-webkit-filter", "blur(0px)");
 			// thisdiv.next().show();
 			// thisdiv.next().addClass('isShown');
-			thisdiv.css("-webkit-filter", "blur(20px)");
+			// thisdiv.css("-webkit-filter", "blur(20px)");
 
-			if(!thisdiv.next().hasClass('isShown')){
-				thisdiv.css("-webkit-filter", "blur(0px)");
-			}
+			// if(!thisdiv.next().hasClass('isShown')){
+			// 	thisdiv.css("-webkit-filter", "blur(0px)");
+			// }
 		});
 }
 //js for print and email buttons on item lists

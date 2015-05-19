@@ -110,7 +110,7 @@ li a span{
 }
 .nav-tabs{
         position:relative;
-        top:24px;
+        /*top:24px;*/
 	border-bottom: 5px solid #DF1D15;
 	padding-bottom: 1px;
 	/*background:url('../images/bg.jpg');*/
@@ -156,7 +156,7 @@ li a span{
 	/*margin-bottom: 10px;*/
 	border-bottom: 1px solid #c7c7c7;
 	padding: 5px 10px;
-	min-height: 40px;
+	min-height: 34px;
 }
 .form-row:last-child{
 	border: 0;
@@ -164,7 +164,7 @@ li a span{
 .tab-content{
 	background: #F8F8F8;
 	padding: 10px;
-	padding-top: 40px;
+	/*padding-top: 40px;*/
 }
 .tab-content h4{
 	padding-left: 10px;
@@ -290,7 +290,7 @@ li a span{
 	margin: 20px 0;
 }
 .signature canvas{
-	height: 180px !important;
+	height: 200px !important;
         width:100%;
 }
 .id-images img{
@@ -342,7 +342,8 @@ li a span{
   z-index: 10;
   width: 280px;
   color: #bbb;
-  top: 25px;
+  /*top: 25px;*/
+  top: 0;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -454,7 +455,7 @@ color: #FFE9E7 !important;
 }
 .top-bar{
     position:relative;
-    top:23px;
+    /*top:23px;*/
 	height: 45px;
 	background: #DF1D15;
 	text-align: center;
@@ -521,17 +522,36 @@ i.glyphicon-barcode {
 .modal-header{
 	background: #DF1D15 !important;
 	color: #fff !important;
+	  padding: 15px !important;
+}
+.modal-header button{
+	  float: left;
+  background: #C2322C;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  opacity: 1;
+  margin-top: -7px !important;
+  text-shadow: initial;
+  color: #F9F9F9;
+}
+.modal-header button:focus{
+	outline: 0;
 }
 .item-overlay{
 	position: absolute;
-	top: 0;
-	width: 100%;
-	/*background: #fff;*/
-	bottom: 0;
-	/*left: 0;*/
-	right: 0;
-        left:-145px;
-	transition: all 0.5s ease;
+	  top: 0;
+	  width: 100%;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  /* left: -100%; */
+	  transform: translate( -100%,0);
+	  -o-transform: translate( -100%,0);
+	  -ms-transform: translate( -100%,0);
+	  -webkit-transform: translate( -100%,0);
+	  transition: transform .6s ease-out;
 /*         -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
@@ -546,13 +566,13 @@ i.glyphicon-barcode {
 
 .isShown{
     
-  -webkit-transform: translate( 45%,0);
-      -ms-transform: translate( 45%,0);
-       -o-transform: translate( 45%,0);
-          transform: translate( 45%,0);
-          -webkit-transition: -webkit-transform .3s ease-out;
-       -o-transition:      -o-transform .3s ease-out;
-        transition:         transform .3s ease-out;
+	-webkit-transform: translate( 0%,0);
+	-ms-transform: translate( 0%,0);
+	-o-transform: translate( 0%,0);
+	transform: translate( 0%,0);
+	-webkit-transition: -webkit-transform .6s ease-out;
+	-o-transition: -o-transform .6s ease-out;
+	transition: transform .6s ease-out;
     }
 
 
@@ -593,12 +613,15 @@ i.glyphicon-barcode {
 .item-email{
 	background: #FCFCFC;
 }
+.item-edit{
+	background: #fff !important;
+}
 .item.close{
 	font-size: 20px;
   padding: 20px 0;
 }
 .item-overlay{
-	display: none;
+	/*display: none;*/
 }
 .item-overlay a:focus{
 	outline: 0;
@@ -618,4 +641,46 @@ i.glyphicon-barcode {
   color: #fff !important;
   display: inline-block;
   margin: 10px 0;
+}
+.select-phones-modal .form-group{
+	border: 0 !important;
+}
+.select-phones-modal .modal-body{
+	padding: 0px !important;
+}
+.select-phones-modal table button{
+	  background: #DF1D15;
+  color: #fff;
+  border: 1px solid #E37569;
+  padding: 0 10px;
+}
+.select-phones-modal table button span{
+	font-size: 11px !important;
+	margin-right: 5px !important;
+}
+.phone-filter{
+	  padding: 5px 20px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 5px;
+}
+.select-phones-modal .form-row{
+	border-bottom: 0 !important;
+}
+.add-phones-btn,
+.add-signature-btn{
+	  background: #DF1D15;
+  color: #fff !important;
+  padding: 7px 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+.add-phones-btn:hover,
+.add-signature-btn:hover{
+	text-decoration: none !important;
+}
+.add-phones-btn span,
+.add-signature-btn span{
+	color: #fff !important;
+	margin-right: 10px;
 }

@@ -649,14 +649,19 @@ i.glyphicon-barcode {
 	padding: 0px !important;
 }
 .select-phones-modal table button{
-	  background: #DF1D15;
-  color: #fff;
-  border: 1px solid #E37569;
-  padding: 0 10px;
+	background: #DF1D15;
+	color: #fff;
+	border: 1px solid #E37569;
+	/* padding: 0 10px; */
+	text-align: center;
+	border-radius: 20px;
+	height: 30px;
+	width: 30px;
+	line-height: 26px;
 }
 .select-phones-modal table button span{
 	font-size: 11px !important;
-	margin-right: 5px !important;
+	/*margin-right: 5px !important;*/
 }
 .phone-filter{
 	  padding: 5px 20px;
@@ -686,4 +691,10 @@ i.glyphicon-barcode {
 }
 .toggle.off .toggle-group {
   background: #F3BAB6 !important;
+}
+.modal-dialog{
+	z-index: 1050 !important;
+}
+.modal-title{
+	text-align: center;
 }

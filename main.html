@@ -185,10 +185,13 @@
         <h4 class="modal-title" id="myModalLabel">Signature</h4>
       </div>
       <div class="modal-body">
-	        <div class="clear" id="signature">
+	        <div class="clearsignature" id="signature">
 		     <a href="#" class="clear-btn" id="clear"><span class="glyphicon glyphicon-remove"> clear signature</span></a>
 		   </div>
-		   <div class="signature"></div>
+          <canvas id="myCanvas"  class="signaturecanvas" ></canvas>
+          <p>Das Verkaufsgegenstand ist frei von Rechten Dritter und nicht als gestohlen gemeldet. Der Verkäufer sichert volle Funktionstüchtigkeit zu, wie sie für dieses Gerät bei bestimmungsgemäßen Gebrauch üblich ist. Diesbezüglich mündliche Erklärungen bzw. Absprachen sind kein Teil dieses Kaufvertrages. Schäden sind unter Besonderheiten aufzuführen.
+Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Verordnung rechtswidrig sein oder werden, so verlieren diese Punkte ihre Rechtskraft bezüglich dieses Vertrages ohne dass die Rechtskraft dieses Vertrages berührt wird. Die entsprechenden Punkte sind dann ihrem Sinne nach von den Vertragsparteien zu erfüllen.</p>
+		   <!--<div class="signature"></div>-->
 		   <div class="button-area">
 		     <input type="submit" value="SUBMIT" id="ksubmit">
 		   </div>
@@ -481,6 +484,7 @@
   <script type="text/javascript" src="js/underscore.js"></script>
   <script src="js/jSignature.min.js"></script>
    <script  src="js/jquery.wipetouch.js"></script>
+   <script src="js/signature_pad.min.js"></script>
    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
   <script src="js/page/kauf.js"></script>
   <script src="js/page/rauc.js"></script>
@@ -600,8 +604,8 @@ $(".item-content").swipe( {
                          
             swipeRight:function(event, direction, distance, duration, fingerCount) {
                 var thisitem = $(this);
-			//var thisdiv = thisitem.closest('div').prev();
-			// $('.item-overlay').hide().
+			var thisdiv = thisitem.closest('div').prev();
+                       // $('.item-overlay').hide().
 			$('.item-overlay').removeClass('isShown');
 			$('.item-content').css("-webkit-filter", "blur(0px)");
                 
@@ -610,21 +614,21 @@ $(".item-content").swipe( {
             
 		});
 
-		$('.item-close').click(function(){
-			var thisitem = $(this);
-			var thisdiv = thisitem.closest('div').prev();
-			// $('.item-overlay').hide().
-			$('.item-overlay').removeClass('isShown');
-			$('.item-content').css("-webkit-filter", "blur(0px)");
-			// thisdiv.next().show();
-			// thisdiv.next().addClass('isShown');
-			// thisdiv.css("-webkit-filter", "blur(20px)");
-
-			// if(!thisdiv.next().hasClass('isShown')){
-			// 	thisdiv.css("-webkit-filter", "blur(0px)");
-		//}
-                        
-		});
+//		$('.item-close').click(function(){
+//			var thisitem = $(this);
+//			var thisdiv = thisitem.closest('div').prev();
+//			// $('.item-overlay').hide().
+//			$('.item-overlay').removeClass('isShown');
+//			$('.item-content').css("-webkit-filter", "blur(0px)");
+//			// thisdiv.next().show();
+//			// thisdiv.next().addClass('isShown');
+//			// thisdiv.css("-webkit-filter", "blur(20px)");
+//
+//			// if(!thisdiv.next().hasClass('isShown')){
+//			// 	thisdiv.css("-webkit-filter", "blur(0px)");
+//		//}
+//                        
+//		});
 }
 //js for print and email buttons on item lists
 $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"buy"}, 

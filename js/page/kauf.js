@@ -20,8 +20,14 @@ function onFail(message) {
   }
 
   $(document).ready(function() {
-    $(".signature").jSignature();
-
+    //$(".signature").jSignature();
+    
+    var canvas=document.getElementsByClassName('signaturecanvas')[0];;
+    //console.error(canvas);
+    var signaturePad = new SignaturePad(canvas);
+$('.clearsignature').click(function(){
+    signaturePad.clear();
+});
 
     $("#barcode").click(function(){
         // $("#imei").val='';
@@ -90,7 +96,7 @@ $( "#ksubmit" ).click(function() {
   cust_info["transaction_type"] = "buy"
   cust_info["article_type"] = "phone"
 
-  cust_info["signature"] = $(".signature").jSignature("getData")
+  cust_info["signature"] = signaturePad.toDataURL();//$(".signature").jSignature("getData")
 
   delete cust_info["ksubmit"];
 

@@ -11,6 +11,10 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  
+  
+  
+  
 </head>
 <body id="top">
   <div class="home-wrapper">
@@ -441,14 +445,15 @@
 			      </tbody>
 			    </table>
 			  </div>
-			</p>
+			
 			</div>
       </div>
     </div>
   </div>
 </div>
 
-</body>
+
+
 <script type="text/javascript">
 
 /*function getUrlVars() {
@@ -475,6 +480,8 @@
   <![endif]-->
   <script type="text/javascript" src="js/underscore.js"></script>
   <script src="js/jSignature.min.js"></script>
+   <script  src="js/jquery.wipetouch.js"></script>
+   <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
   <script src="js/page/kauf.js"></script>
   <script src="js/page/rauc.js"></script>
   <script src="js/page/offer.js"></script>
@@ -560,7 +567,20 @@
 
 <script type="text/javascript">
 function list_listener () {
-	$('.item-content').click(function(){
+//    $("item-content").on("swipe",function(){
+//      alert('swipe called');
+//$('.item-content').wipetouch({
+//  tapToClick: true, // if user taps the screen, triggers a click event
+//  wipeLeft: function(result) {alert('hello') },
+//  wipeRight: function(result) { }
+//});
+
+$(".item-content").swipe( {
+        //Generic swipe handler for all directions
+        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+         
+
+	//$('.item-content').click(function(){
 			thisdiv = $(this);
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 
@@ -576,7 +596,18 @@ function list_listener () {
 
 			// if(!thisdiv.next().hasClass('isShown')){
 			// 	thisdiv.css("-webkit-filter", "blur(0px)");
-			// }
+			 },
+                         
+            swipeRight:function(event, direction, distance, duration, fingerCount) {
+                var thisitem = $(this);
+			//var thisdiv = thisitem.closest('div').prev();
+			// $('.item-overlay').hide().
+			$('.item-overlay').removeClass('isShown');
+			$('.item-content').css("-webkit-filter", "blur(0px)");
+                
+              } ,  
+                  
+            
 		});
 
 		$('.item-close').click(function(){
@@ -591,7 +622,8 @@ function list_listener () {
 
 			// if(!thisdiv.next().hasClass('isShown')){
 			// 	thisdiv.css("-webkit-filter", "blur(0px)");
-			// }
+		//}
+                        
 		});
 }
 //js for print and email buttons on item lists
@@ -819,4 +851,6 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 </script>
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+
+</body>
 </html>

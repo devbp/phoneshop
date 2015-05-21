@@ -30,6 +30,7 @@ function addToCart(article)
 {
 	
 	var price = prompt("Selling Price", "");
+        
 	if (price)
 	{
 		console.log({"id":article.id,"price":price,"name":article["name"]})

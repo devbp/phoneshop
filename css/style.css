@@ -535,7 +535,7 @@ i.glyphicon-barcode {
 .modal-header{
 	//background: #DF1D15 !important;
 	background:white;
-        color: #fff !important;
+        color: black !important;
 	padding: 5px !important;
 }
 .modal-header button{
@@ -548,7 +548,8 @@ i.glyphicon-barcode {
   opacity: 1;
   margin-top: -7px !important;
   text-shadow: initial;
-  color: #F9F9F9;
+  //color: #F9F9F9;
+  color:black;
 }
 .modal-header button:focus{
 	outline: 0;

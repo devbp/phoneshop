@@ -13,7 +13,7 @@ $(document ).ready(function() {
                     //console.log("Failed")
                     //alert('Invalid username or password');
                     navigator.notification.alert(
-                    'Invalid username or password!',  // message
+                    'Please enter username or password!',  // message
                       alertdismissed,         // callback
                        ' ',            // title
                         'Ok'                  // buttonName
@@ -44,7 +44,13 @@ $(document ).ready(function() {
          
           if (returnedData.statusCode != 200)
          {
-            alert("Try Again with valid username and password. There was a problem.")
+                 navigator.notification.alert(
+                    'Invalid username or password!',  // message
+                      alertdismissed,         // callback
+                       ' ',            // title
+                        'Ok'                  // buttonName
+                        );
+           // alert("Try Again with valid username and password. There was a problem.")
          }
          
     });

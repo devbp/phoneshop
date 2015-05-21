@@ -35,9 +35,9 @@ function addToCart(article)
 		console.log({"id":article.id,"price":price,"name":article["name"]})
 		SELLING_PHONES.push({"id":article.id,"price":price,"name":article["name"]})
 	var tr = "<tr id=selectedRow"+article.id+">"+
-	"<td>"+article["manufacturer"]+"</td>"+
+	//"<td>"+article["manufacturer"]+"</td>"+
 	"<td>"+article["name"]+"</td>"+
-	"<td>"+article["imei"]+"</td>"+
+	//"<td>"+article["imei"]+"</td>"+
 	"<td>"+price+"</td>"+
 	"<td><button onclick='return removeFromCart("+JSON.stringify(article.id)+")'><span class='glyphicon glyphicon-remove'></span>Remove</button></td>"+
 	"</tr>"

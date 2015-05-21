@@ -215,7 +215,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">Delete Pharse</h4>
       </div>
       <div class="modal-body">
@@ -231,7 +231,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">Edit</h4>
       </div>
       <div class="modal-body">
@@ -462,6 +462,7 @@
   var token = localStorage.getItem("token") //getUrlVars()["token"];
   var CURRENT_PDF_URL;
   var CURRENT_TRANSACTION_ID;
+  var CURRENT_DIV;
   var thediv;
   var value;
 
@@ -565,6 +566,7 @@ function list_listener () {
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 
 			CURRENT_TRANSACTION_ID = thisdiv[0].getElementsByTagName("div")[1].innerHTML
+			CURRENT_DIV = thisdiv.closest('.item-row');
 			//prepare_view(CURRENT_TRANSACTION_ID)
 			console.log(CURRENT_TRANSACTION_ID)
 			// $('.item-overlay').hide();
@@ -639,15 +641,23 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 
 	function delete_transaction(div)
 	{
-		delete_phrase = $(div).prev().val()
+		delete_phrase = $(div).prev().val();
 		if (delete_phrase === "yesdelete")
 		{
                //post request to the delete endpoint
-               $('.modal').modal('hide');
+               $.post('http://s250217848.online.de/api/public/index.php/transaction/remove', {"id":CURRENT_TRANSACTION_ID}, function(returnedData){
+						if(returnedData.message == 'Success.'){
+							CURRENT_DIV.remove();
+						}else{
+
+						}
+						alert(returnedData.message);
+					});
+                $('.modal').modal('hide');
 		}
 		else
 		{
-			alert("Not deleted")
+			alert("Not deleted");
                $('.modal').modal('hide');
 
 		}

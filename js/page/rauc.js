@@ -315,7 +315,7 @@ function populateSelectPhones(articles)
       "<td>"+articles[i]["name"]+"</td>"+
       "<td>"+articles[i]["price"]+"</td>"+      
       "<td>"+articles[i]["imei"]+"</td>"+
-      "<td><button onclick='return addToCart("+JSON.stringify(articles[i])+")'><span class='glyphicon glyphicon-plus'></span>Add</button></td>"+
+      "<td><button onclick='return addToCart("+JSON.stringify(articles[i])+")'><span class='glyphicon glyphicon-plus'></span></button></td>"+
       "</tr>"
 
       $("#select_phones").append(tr);

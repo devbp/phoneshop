@@ -29,7 +29,7 @@ function removeFromCart(index)
 function addToCart(article)
 {
 	
-	var price = prompt("Selling Price", "");
+	// var price = prompt("Selling Price", "");
         
 	if (price)
 	{

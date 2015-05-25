@@ -562,10 +562,10 @@ i.glyphicon-barcode {
 	  left: 0;
 	  right: 0;
 	  /* left: -100%; */
-	  transform: translate( 100%,0);
-	  -o-transform: translate( 100%,0);
-	  -ms-transform: translate( 100%,0);
-	  -webkit-transform: translate( 100%,0);
+	  transform: translate( -100%,0);
+	  -o-transform: translate( -100%,0);
+	  -ms-transform: translate( -100%,0);
+	  -webkit-transform: translate( -100%,0);
 	  transition: transform .6s ease-out;
 /*         -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;

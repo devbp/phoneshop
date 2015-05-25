@@ -216,21 +216,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
     </div>
   </div>
 </div>
-<!-- Modal content for Selling Price on item list -->
-<div class="modal fade" id="sellingPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-        <h4 class="modal-title" id="myModalLabel">Selling Price</h4>
-      </div>
-      <div class="modal-body">
-	        <input class="modal-email" type="text" placeholder="Selling Price">
-	        <input class="app-btn" type="submit" value="Submit" onclick="javascript:addToCart(this);">
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal content for Delete on item list -->
 <div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -256,7 +242,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 </div>
 
 <!-- Modal content for Edit on item list -->
-<div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -295,7 +281,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
     </div>
   </div>
 </div>
-
+ -->
  
 
 <!-- Modal for sell page -->
@@ -478,7 +464,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 
 
 <!-- Modal for Edit artical page -->
-<div class="modal fade" id="editArticalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myEditModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -557,6 +543,21 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
   </div>
 </div>
 
+<!-- Modal content for Selling Price on item list -->
+<div class="modal fade" id="sellingPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="myModalLabel">Selling Price</h4>
+      </div>
+      <div class="modal-body">
+	        <input class="modal-email" type="text" placeholder="Selling Price">
+	        <input class="app-btn" type="submit" value="Submit" onclick="javascript:addToCart(this);">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
@@ -678,20 +679,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 
 <script type="text/javascript">
 function list_listener () {
-//    $("item-content").on("swipe",function(){
-//      alert('swipe called');
-//$('.item-content').wipetouch({
-//  tapToClick: true, // if user taps the screen, triggers a click event
-//  wipeLeft: function(result) {alert('hello') },
-//  wipeRight: function(result) { }
-//});
-
-$(".item-content").swipe( {
-        //Generic swipe handler for all directions
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {
-         
-
-	//$('.item-content').click(function(){
+	$('.item-content').click(function(){
 			thisdiv = $(this);
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 
@@ -708,35 +696,23 @@ $(".item-content").swipe( {
 
 			// if(!thisdiv.next().hasClass('isShown')){
 			// 	thisdiv.css("-webkit-filter", "blur(0px)");
-			 },
-                         
-            swipeRight:function(event, direction, distance, duration, fingerCount) {
-                var thisitem = $(this);
-			var thisdiv = thisitem.closest('div').prev();
-                       // $('.item-overlay').hide().
-			$('.item-overlay').removeClass('isShown');
-			$('.item-content').css("-webkit-filter", "blur(0px)");
-                
-              } ,  
-                  
-            
+			// }
 		});
 
-//		$('.item-close').click(function(){
-//			var thisitem = $(this);
-//			var thisdiv = thisitem.closest('div').prev();
-//			// $('.item-overlay').hide().
-//			$('.item-overlay').removeClass('isShown');
-//			$('.item-content').css("-webkit-filter", "blur(0px)");
-//			// thisdiv.next().show();
-//			// thisdiv.next().addClass('isShown');
-//			// thisdiv.css("-webkit-filter", "blur(20px)");
-//
-//			// if(!thisdiv.next().hasClass('isShown')){
-//			// 	thisdiv.css("-webkit-filter", "blur(0px)");
-//		//}
-//                        
-//		});
+		$('.item-close').click(function(){
+			var thisitem = $(this);
+			var thisdiv = thisitem.closest('div').prev();
+			// $('.item-overlay').hide().
+			$('.item-overlay').removeClass('isShown');
+			$('.item-content').css("-webkit-filter", "blur(0px)");
+			// thisdiv.next().show();
+			// thisdiv.next().addClass('isShown');
+			// thisdiv.css("-webkit-filter", "blur(20px)");
+
+			// if(!thisdiv.next().hasClass('isShown')){
+			// 	thisdiv.css("-webkit-filter", "blur(0px)");
+			// }
+		});
 }
 //js for print and email buttons on item lists
 $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"buy"}, 

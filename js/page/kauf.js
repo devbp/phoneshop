@@ -125,13 +125,29 @@ $( "#ksubmit" ).click(function() {
 
   if(cust_info["signature"] === "")
   {
-    alert("Signature is required")
+    //alert("Signature is required")
+    navigator.notification.alert(
+                        'Signature is required!',  // message
+                                 function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                             );
     return
   }
   else if(cust_info["customer_name"] === "")
   {
-    alert("Customer Name required");
-    return
+   // alert("Customer Name required");
+            navigator.notification.alert(
+                                            'Customer name required!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+        return
   }
   else if(cust_info["bill_number"] === "")
   {
@@ -215,7 +231,15 @@ function getBase64Image(img) {
     }
     else
     {
-      alert("Transaction Completed")
+        navigator.notification.alert(
+                                            'Transaction Completed!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+    //  alert("Transaction Completed")
       // $.ajax({
       //       type: "POST",
       //       url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -250,7 +274,16 @@ function getBase64Image(img) {
 
       //});
         cordova.plugins.printer.print(returnedData.message.replace("/index.php",""), 'Transacton', function () {
-                 alert('printing finished')
+                // alert('printing finished')
+                 navigator.notification.alert(
+                                            'Printing Completed!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+                 
         });
       $.get("http://s250217848.online.de/api/public/index.php/article/all?token="+token, function( data ) {
         $("#select_phones").html('');

@@ -6,11 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Phone shop - Buy</title>
+  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.alerts.css">
   
   
   
@@ -544,7 +546,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 </div>
 
 <!-- Modal content for Selling Price on item list -->
-<div class="modal fade" id="sellingPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade sellprice" id="sellingPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -552,8 +554,8 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
         <h4 class="modal-title" id="myModalLabel">Selling Price</h4>
       </div>
       <div class="modal-body">
-	        <input class="modal-email" type="text" placeholder="Selling Price">
-	        <input class="app-btn" type="submit" value="Submit" onclick="javascript:addToCart(this);">
+	        <input class="modal-email" type="text" placeholder="Selling Price" pattern="[0-9]*">
+	        <input class="app-btn" type="submit" value="Submit" onclick="javascript:selling_price(this);">
       </div>
     </div>
   </div>
@@ -576,11 +578,16 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
   var CURRENT_DIV;
   var thediv;
   var value;
+  var sellingprice;
+  var sellarticle;
 
 </script>
 <script type="text/javascript" src="cordova.js"></script>
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+
 <script type="text/javascript" src="js/jquery.js"></script>
+
+<!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
 <script src="js/bootbox.min.js"></script>
@@ -591,7 +598,8 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
   <script src="js/jSignature.min.js"></script>
    <script  src="js/jquery.wipetouch.js"></script>
    <script src="js/signature_pad.min.js"></script>
-  
+   <script src="js/jquery.alerts.js"></script>
+ 
 
    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
   <script src="js/page/kauf.js"></script>
@@ -612,6 +620,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
  		});
  		$('#nav-tab-report').click(function(){
  			$('#main-title').text('Report');
+                    
  		});
  	});
 
@@ -679,7 +688,46 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 
 <script type="text/javascript">
 function list_listener () {
-	$('.item-content').click(function(){
+    
+//    $(".item-content").on("swipeleft",function(){
+//  //alert("You swiped left!");
+//});
+
+//$('.item-content').click(function(){
+//    thisdiv=$(this);
+//    console.log
+//});
+//    $('.item-content').wipetouch(
+//{           
+//	// settings here
+//	wipeRight: function(result) { $('.item-overlay').removeClass('isShown');},
+//	wipeLeft: function(result) {
+//            //thisdiv = $(this);
+//    
+//			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
+//
+//			CURRENT_TRANSACTION_ID = thisdiv[0].getElementsByTagName("div")[1].innerHTML
+//			CURRENT_DIV = thisdiv.closest('.item-row');
+//			//prepare_view(CURRENT_TRANSACTION_ID)
+//			console.log(CURRENT_TRANSACTION_ID)
+//			// $('.item-overlay').hide();
+//			$('.item-overlay').removeClass('isShown');
+//			$('.item-content').css("-webkit-filter", "blur(0px)");
+//			// thisdiv.next().show();
+//			thisdiv.next().addClass('isShown'); 
+//                        },
+//	wipeUp: function(result) {},
+//	wipeDown: function(result) { },
+//});
+    //remove overlay on right swipe
+//            $('.item-content').on('swiperight',function(){
+//               // var tdiv = $(this);
+//               
+//                $('.item-overlay').removeClass('isShown');
+//            });
+//    
+	//$('.item-content').on('swipeleft',function()
+        $('.item-content').click(function(){
 			thisdiv = $(this);
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 
@@ -747,15 +795,39 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 					transaction_id: returnedData.transactions[i].transaction_id
 				}));
 				};
+                                
 			list_listener()	 
 		});
 	});
 
 	function print (url) {
 		cordova.plugins.printer.print(url, 'Transacton', function () {
-                 alert('printing finished')
+                 //alert('printing finished')
+                 navigator.notification.alert(
+                                            'Print Completed!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Done'                  // buttonName
+                                                     );
         });
 	}
+
+
+function selling_price(div)
+	{
+		var sprice = $(div).prev().val();
+                addToCart(sellarticle,sprice);
+		
+             $('.sellprice').modal('hide');
+             $('.select-phones-modal').modal('hide');
+		
+		//return sellingprice;
+		
+	}
+
+
 
 	function delete_transaction(div)
 	{
@@ -769,13 +841,31 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 						}else{
 
 						}
-						alert(returnedData.message);
+                                                
+                                              navigator.notification.alert(
+                                            'Item Deleted!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Done'                  // buttonName
+                                                     );
+						//alert(returnedData.message);
 					});
                 $('.modal').modal('hide');
 		}
 		else
 		{
-			alert("Not deleted");
+                   
+                    navigator.notification.alert(
+                                            'Item not Deleted!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+		//alert("Not deleted");
                $('.modal').modal('hide');
 
 		}
@@ -803,7 +893,16 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
                  }
                }
              }).done(function(response) {
-               alert("Email Sent"); 
+              // alert("Email Sent");
+                             navigator.notification.alert(
+                                            'Email Sent!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                               );         
+    
                $('.modal').modal('hide');
 
 

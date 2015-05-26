@@ -26,11 +26,11 @@ function removeFromCart(index)
 	//console.log(SELLING_PHONES)
 
 }
-function addToCart(article)
+function addToCart(article,price)
 {
-	
+	//var price=$(article).prev().val();
 	// var price = prompt("Selling Price", "");
-        
+      
 	if (price)
 	{
 		console.log({"id":article.id,"price":price,"name":article["name"]})
@@ -46,7 +46,7 @@ function addToCart(article)
 	$("#selected_phones").append(tr);	
 	}
 	
-
+//$('.modal').modal('hide');
 }
 
 $( document ).ready(function() {
@@ -222,12 +222,12 @@ $( "#rsubmit" ).click(function() {
 	cust_info["phones"]	= JSON.stringify(SELLING_PHONES)
 	cust_info["others"]	= JSON.stringify(others)
 	
-	//spinnerplugin.show();
+	spinnerplugin.show();
 	
 	$.post('http://s250217848.online.de/api/public/index.php/transaction/sell', cust_info, 
 		function(returnedData){
 			console.log(returnedData)
-			//spinnerplugin.hide(); 
+			spinnerplugin.hide(); 
 					//alert(JSON.stringify(cust_info))
 					
 					if (returnedData.statusCode !== 200)
@@ -240,8 +240,17 @@ $( "#rsubmit" ).click(function() {
 						
 					}
 					else
-					{
-						alert("Transaction Completed")
+					{//alert for mobile version
+                                            navigator.notification.alert(
+                                            'Transaction Completed!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+                                             
+						//alert("Transaction Completed")
 						// $.ajax({
 						// 	type: "POST",
 						// 	url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -275,7 +284,16 @@ $( "#rsubmit" ).click(function() {
 						// 	alert("Email Sent"); 
 						// });
 						cordova.plugins.printer.print(returnedData.message.replace("/index.php",""), 'Transacton', function () {
-   							 alert('printing finished')
+   							 //alert('printing finished')
+                                                         navigator.notification.alert(
+                                            'Print Completed!',  // message
+                                             function(){
+                                                 
+                                             },         // callback
+                                              ' ',            // title
+                                                'Ok'                  // buttonName
+                                                     );
+                                                         
 						});
                         //window.location = "https://docs.google.com/viewer?url="+returnedData.message.replace("/index.php","");
                         $(':input').val('');
@@ -316,12 +334,20 @@ function populateSelectPhones(articles)
       "<td>"+articles[i]["name"]+"</td>"+
       "<td>"+articles[i]["price"]+"</td>"+      
       "<td>"+articles[i]["imei"]+"</td>"+
-      "<td><button data-toggle='modal' data-target='#sellingPriceModal' onclick='return addToCart("+JSON.stringify(articles[i])+")'><span class='glyphicon glyphicon-plus'></span></button></td>"+
+      "<td><button data-toggle='modal' data-target='#sellingPriceModal' onclick='return SellItems("+JSON.stringify(articles[i])+")'><span class='glyphicon glyphicon-plus'></span></button></td>"+
       "</tr>"
 
       $("#select_phones").append(tr);
     }
   }
+  
+  
+  function SellItems(articles)
+  {
+       sellarticle= articles;
+      
+  }
+  
   function today(){
     var today = new Date();
     var dd = today.getDate();

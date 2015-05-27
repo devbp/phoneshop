@@ -26,25 +26,60 @@ function removeFromCart(index)
 	//console.log(SELLING_PHONES)
 
 }
-function addToCart(article,price)
+//<<<<<<< HEAD
+//function addToCart(article,price)
+//=======
+$('.close-sell').click(function(){
+	$('#selltitle').text('Edit Bill');
+	$('#customer_detail').hide();
+	$('#rsubmit').hide();
+	$('#raucsubmit').show();
+});
+
+function addToCart(article)
+//>>>>>>> bibekkc
 {
 	//var price=$(article).prev().val();
 	// var price = prompt("Selling Price", "");
+//<<<<<<< HEAD
       
-	if (price)
-	{
-		console.log({"id":article.id,"price":price,"name":article["name"]})
-		SELLING_PHONES.push({"id":article.id,"price":price,"name":article["name"]})
-	var tr = "<tr id=selectedRow"+article.id+">"+
-	//"<td>"+article["manufacturer"]+"</td>"+
-	"<td>"+article["name"]+"</td>"+
-	//"<td>"+article["imei"]+"</td>"+
-	"<td>"+price+"</td>"+
-	"<td><button onclick='return removeFromCart("+JSON.stringify(article.id)+")'><span class='glyphicon glyphicon-remove'></span>Remove</button></td>"+
-	"</tr>"
-	//console.log(SELLING_PHONES)
-	$("#selected_phones").append(tr);	
-	}
+	// if (price)
+	// {
+	// 	console.log({"id":article.id,"price":price,"name":article["name"]})
+	// 	SELLING_PHONES.push({"id":article.id,"price":price,"name":article["name"]})
+	// var tr = "<tr id=selectedRow"+article.id+">"+
+	// //"<td>"+article["manufacturer"]+"</td>"+
+	// "<td>"+article["name"]+"</td>"+
+	// //"<td>"+article["imei"]+"</td>"+
+	// "<td>"+price+"</td>"+
+	// "<td><button onclick='return removeFromCart("+JSON.stringify(article.id)+")'><span class='glyphicon glyphicon-remove'></span>Remove</button></td>"+
+	// "</tr>"
+	// //console.log(SELLING_PHONES)
+	// $("#selected_phones").append(tr);	
+	// }
+// =======
+    $('.sellprice-set').click(function(){
+    	var thisbtn = $(this);
+    	price = thisbtn.prev().val();
+    	thisbtn.prev().val('');
+    	if (price)
+		{
+			console.log({"id":article.id,"price":price,"name":article["name"]})
+			SELLING_PHONES.push({"id":article.id,"price":price,"name":article["name"]})
+		var tr = "<tr id=selectedRow"+article.id+">"+
+		//"<td>"+article["manufacturer"]+"</td>"+
+		"<td>"+article["name"]+"</td>"+
+		//"<td>"+article["imei"]+"</td>"+
+		"<td>"+price+"</td>"+
+		"<td><button onclick='return removeFromCart("+JSON.stringify(article.id)+")'><span class='glyphicon glyphicon-remove'></span>Remove</button></td>"+
+		"</tr>"
+		//console.log(SELLING_PHONES)
+		$("#selected_phones").append(tr);
+		$('#selectPhonesModal').modal('hide');
+		}
+    });
+	
+// >>>>>>> bibekkc
 	
 //$('.modal').modal('hide');
 }
@@ -361,3 +396,129 @@ function populateSelectPhones(articles)
   } 
   return dd+'/'+mm+'/'+yyyy;
 }
+
+
+$( "#raucsubmit" ).click(function() {
+	cust_info = {}
+	cust_info["token"] = token
+	cust_info["transaction_type"] = "sell"
+
+	var other_names = ($(".other_name").map(function(){return $(this).val();}).get()).filter(Boolean);
+	var other_prices = ($(".other_price").map(function(){return $(this).val();}).get()).filter(Boolean);
+	var other_quantities = ($(".other_quantity").map(function(){return $(this).val();}).get()).filter(Boolean);
+	var other_taxes = ($(".other_tax").map(function(){if(this.checked){return "on"}else{return "off"};}).get()).filter(Boolean);
+	var other_taxes_values = ($(".tax_value").map(function(){return $(this).val();}).get()).filter(Boolean);
+	others = []
+	for (var i = other_names.length - 1; i >= 0; i--) {
+		other = {}	
+		other["name"] = other_names[i]
+		other["price"] = other_prices[i]
+		other["qty"] = other_quantities[i]
+		other["tax"] = other_taxes[i]
+		other["tax_value"] = other_taxes_values[i]
+		others.push(other)
+	};
+	
+	$.each($("#customer_detail input"), function(key,value)
+	{
+		var attr = $(value).attr("id");
+		var value = $(value).val();
+		if(!value)
+		{
+				cust_info[attr] = "none"  //comment this in production
+				return;
+		}
+		cust_info[attr] = value;
+
+	});
+	cust_info['id'] = CURRENT_TRANSACTION_ID;
+	cust_info["phones"]	= JSON.stringify(SELLING_PHONES);
+	cust_info["others"]	= JSON.stringify(others);
+	// console.log(cust_info);return false;
+	//spinnerplugin.show();
+	
+	$.post('http://s250217848.online.de/api/public/index.php/transaction/update', cust_info, 
+		function(returnedData){
+			console.log(returnedData)
+			//spinnerplugin.hide(); 
+					//alert(JSON.stringify(cust_info))
+					
+					if (returnedData.statusCode !== 200)
+					{
+						
+						for (var key in returnedData.errors) {
+							alert(returnedData.errors[key])
+							return                             
+						}
+						
+					}
+					else
+					{
+						alert("Transaction Completed")
+						// $.ajax({
+						// 	type: "POST",
+						// 	url: "https://mandrillapp.com/api/1.0/messages/send.json",
+						// 	data: {
+						// 		'key': '4hL8kWTGJB1Ztv2rDVNalA',
+						// 		'message': {
+						// 			'from_email': 'transactions@wingshandy.com',
+						// 			'to': [
+						// 			{
+						// 				'email': 'salik.adhikari@gmail.com',
+						// 				'name': 'Bikram Adhikari',
+						// 				'type': 'to'
+						// 			},
+						// 			{
+						// 				'email': 'toyou.dev@gmail.com',
+						// 				'name': 'Dev Bahadur Paudel',
+						// 				'type': 'to'
+						// 			},
+						// 			{
+						// 				'email': 'sahil@wingshandy.com',
+						// 				'name': 'Sahil',
+						// 				'type': 'to'
+						// 			}
+						// 			],
+						// 			'autotext': 'true',
+						// 			'subject': 'Receipt',
+						// 			'html': 'Hi, The receipt for the transaction ' + returnedData.message.replace("/index.php","")
+						// 		}
+						// 	}
+						// }).done(function(response) {
+						// 	alert("Email Sent"); 
+						// });
+						cordova.plugins.printer.print(returnedData.message.replace("/index.php",""), 'Transacton', function () {
+   							 alert('printing finished')
+						});
+						var thisitem = $('#transaction_id'+CURRENT_TRANSACTION_ID);
+						thisitem.prev().text(returnedData.message.replace("/index.php",""));
+						thisitem.closest('div').next().find('.item-edit').attr('onclick', returnedData.message.replace("/index.php",""));
+						thisitem.closest('div').next().find('.item-view').attr('onclick', returnedData.message.replace("/index.php",""));
+                        //window.location = "https://docs.google.com/viewer?url="+returnedData.message.replace("/index.php","");
+                        $(':input').val('');
+                        $("#selected_phones").empty()
+                        $.get("http://s250217848.online.de/api/public/index.php/article/all?token="+token, function( data ) {
+							$("#select_phones").html('');
+							$("#selected_phones").html('');
+							ARTICLES = data["article"]		
+							$.each(ARTICLES, function( i, article ) {
+							if (!$("#manufacturer_select option[value='" + article["manufacturer"] + "']").length)
+								$("#manufacturer_select").append($("<option />").val(article["manufacturer"]).text(article["manufacturer"]));
+							});	
+		
+							populateSelectPhones(ARTICLES)
+		
+						}); 
+                        $("#rsubmit").val("Submit")
+                        $.get("http://s250217848.online.de/api/public/index.php/customer/all?token="+token, function( data ) {
+							CUSTOMERS = data.customer
+							console.log(CUSTOMERS)
+						}); 
+
+                    }
+                    
+
+                });
+
+
+});

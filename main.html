@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Phone shop - Buy</title>
   <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/jquery.alerts.css">
+<!--  <link rel="stylesheet" type="text/css" href="css/jquery.alerts.css">-->
   
   
   
@@ -429,7 +429,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+        <button type="button" class="close close_selectphones"  data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="myModalLabel">Select Phone(s)</h4>
       </div>
       <div class="modal-body">
@@ -464,8 +464,8 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
   </div>
 </div>
 
-
-<!-- Modal for Edit artical page -->
+<!--
+ Modal for Edit artical page 
 <div class="modal fade" id="myEditModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -483,9 +483,9 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 			  <table id="phones" cellspacing="0" cellpadding="10" class="table-striped" width="100%">
 			    <thead>
 			      <tr>
-			        <!--<th>Manufacturer</th>-->
+			        <th>Manufacturer</th>
 			        <th>Model</th>
-			       <!-- <th>IMEI</th> -->
+			        <th>IMEI</th> 
 			        <th>Price</th>
 			        <th>Remove</th>
 			      </tr>
@@ -530,7 +530,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 			<div class="add">
 			 <a href="#" class="add-btn"><span class="glyphicon glyphicon-plus" id="add_other"></span></a>
 			</div>
-			<!-- <div class="signature"></div> -->
+			 <div class="signature"></div> 
 			<div id="rreport">
 			    
 			</div>
@@ -543,7 +543,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
       
     </div>
   </div>
-</div>
+</div>-->
 
 <!-- Modal content for Selling Price on item list -->
 <div class="modal fade sellprice" id="sellingPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -588,20 +588,20 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 <script type="text/javascript" src="js/jquery.js"></script>
 
 <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
-<script src="js/bootbox.min.js"></script>
+
 <!--[if lt IE 9]>
   <script type="text/javascript" src="libs/flashcanvas.js"></script>
   <![endif]-->
   <script type="text/javascript" src="js/underscore.js"></script>
   <script src="js/jSignature.min.js"></script>
-   <script  src="js/jquery.wipetouch.js"></script>
+<!--   <script  src="js/jquery.wipetouch.js"></script>-->
    <script src="js/signature_pad.min.js"></script>
-   <script src="js/jquery.alerts.js"></script>
+<!--   <script src="js/jquery.alerts.js"></script>-->
  
 
-   <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+<!--   <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>-->
   <script src="js/page/kauf.js"></script>
   <script src="js/page/rauc.js"></script>
   <script src="js/page/offer.js"></script>
@@ -623,6 +623,27 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
                     
  		});
  	});
+        
+        
+
+        $('.add-phones-btn').click(function(){            
+            //$('#selectPhonesModal').modal('show')
+            //$('#selectPhonesModal').modal('hide');
+          $('#mySellModal').modal('hide');
+            
+       
+        });
+        
+        $('.top-add-icon').click(function(){
+           // $('itemlist').hide();
+            //$('tab-content').modal('hide');
+            
+        });
+        
+        
+        $('.close_selectphones').click(function(){
+            $('#mySellModal').modal('show');
+        });
 
   </script>
   <script type="text/javascript">
@@ -822,7 +843,7 @@ function selling_price(div)
 		
              $('.sellprice').modal('hide');
              $('.select-phones-modal').modal('hide');
-		
+		$('#mySellModal').modal('show');
 		//return sellingprice;
 		
 	}

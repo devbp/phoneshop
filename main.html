@@ -6,9 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Phone shop - Buy</title>
-  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
+  
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
+<!--  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -590,6 +591,7 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
+<script src="js/jquery.mobile.custom.min.js"></script>
 
 <!--[if lt IE 9]>
   <script type="text/javascript" src="libs/flashcanvas.js"></script>
@@ -710,8 +712,21 @@ Sollten einzelne Punkte dieses Vertrages aufgrund eines Gesetzes oder einer Vero
 <script type="text/javascript">
 function list_listener () {
     
-//    $(".item-content").on("swipeleft",function(){
-//  //alert("You swiped left!");
+    $(".item-content").on("swiperight",function(){
+//        var thisitem = $(this);
+//        console.error(thisitem.next())
+//        thisitem.next().removeClass('isShown');
+        $('.item-overlay').removeClass('isShown');
+        
+    });
+    
+    $('.item-overlay').on("swiperight",function(){
+        $(this).removeClass('isShown');
+    });
+    
+    
+    $(".item-content").on("swipeleft",function(){
+  //alert("You swiped left!");
 //});
 
 //$('.item-content').click(function(){
@@ -748,7 +763,7 @@ function list_listener () {
 //            });
 //    
 	//$('.item-content').on('swipeleft',function()
-        $('.item-content').click(function(){
+       // $('.item-content').click(function(){
 			thisdiv = $(this);
 			CURRENT_PDF_URL = thisdiv[0].getElementsByTagName("div")[0].innerHTML
 

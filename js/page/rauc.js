@@ -254,7 +254,12 @@ $( "#rsubmit" ).click(function() {
 					}
 					else
 					{
-						alert("Transaction Completed")
+						alert("Transaction Completed");
+						SELLING_PHONES = [];
+						$('#selected_phones').empty();
+						$('#other_detail_container').find('.other_detail').not('#first_other').remove();
+						$('#mySellModal input:text').val('');
+						$('#mySellModal').modal('hide');
 						// $.ajax({
 						// 	type: "POST",
 						// 	url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -406,7 +411,12 @@ $( "#raucsubmit" ).click(function() {
 					}
 					else
 					{
-						alert("Transaction Completed")
+						alert("Transaction Completed");
+						SELLING_PHONES = [];
+						$('#selected_phones').empty();
+						$('#other_detail_container').find('.other_detail').not('#first_other').remove();
+						$('#mySellModal input:text').val('');
+						$('#mySellModal').modal('hide');
 						// $.ajax({
 						// 	type: "POST",
 						// 	url: "https://mandrillapp.com/api/1.0/messages/send.json",

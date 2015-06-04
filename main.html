@@ -654,23 +654,24 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
 					transaction_id: returnedData.transactions[i].transaction_id
 				}));
 				};
+				$('#buy-panel').find('.item-edit').attr('data-target', '');
 				list_listener()
 				 
 		});
 	});
 	$.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"sell"}, 
-		function(returnedData){
+		function(returnedData){console.log(returnedData.transactions);
 			$.get("js/page/list_item.html", function( data ) {
 				var compiled = _.template(data);
 				for (var i = returnedData.transactions.length - 1; i >= 0; i--) {
-					$("#sell-panel").append(compiled({
+					try{$("#sell-panel").append(compiled({
 					customer_name: returnedData.transactions[i].customer_name,
 					price: returnedData.transactions[i].articles[0].price,
 					article_name: returnedData.transactions[i].articles[0].article_name,
 					date: returnedData.transactions[i].transaction_date.date,
 					pdf: returnedData.transactions[i].pdf,
 					transaction_id: returnedData.transactions[i].transaction_id
-				}));
+				}));}catch(err){console.log(err.message);}console.log('asdf');
 				};
 			list_listener()	 
 		});

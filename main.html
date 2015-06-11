@@ -729,7 +729,8 @@ $.post('http://s250217848.online.de/api/public/index.php/report/all', {"type":"b
                  }
                }
              }).done(function(response) {
-               alert("Email Sent"); 
+               alert("Email Sent");
+               $(div).prev().val('');
                $('.modal').modal('hide');
 
 
